@@ -1,5 +1,5 @@
 [package]
-name = "daniils_status"
+name = "slack_status"
 version = "0.1.0"
 edition = "2021"
 
