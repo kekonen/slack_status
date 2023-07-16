@@ -8,12 +8,16 @@ use clap::{Parser, Subcommand};
 
 #[derive(Debug, Serialize, Deserialize, Clone, Parser)]
 struct Profile {
+    /// Sets text of the status
     #[serde(rename = "status_text", skip_serializing_if = "Option::is_none")]
     #[arg(long, short)]
     text: Option<String>,
+
+    /// Sets emoji of the status (provide as :emoji:)
     #[serde(rename = "status_emoji", skip_serializing_if = "Option::is_none")]
     #[arg(short, long)]
     emoji: Option<String>,
+    /// Sets expiration of the status as a Unix timestamp
     #[serde(rename = "status_expiration", skip_serializing_if = "Option::is_none")]
     #[arg(long, short = 'x')]
     expiration: Option<u64>,
@@ -21,15 +25,23 @@ struct Profile {
 
 #[derive(Debug, Serialize, Deserialize, Clone, Parser)]
 struct Photo {
+
+    /// Path to image file
     #[serde(skip_serializing_if = "Option::is_none")]
     #[arg(index = 1)]
     image: Option<String>,
+
+    /// X coordinate of top-left corner of crop box
     #[serde(skip_serializing_if = "Option::is_none")]
     #[arg(long, short = 'x')]
     crop_x: Option<u64>,
+
+    /// Y coordinate of top-left corner of crop box
     #[serde(skip_serializing_if = "Option::is_none")]
     #[arg(long, short = 'y')]
     crop_y: Option<u64>,
+
+    /// Width/height of crop box (always square)
     #[serde(skip_serializing_if = "Option::is_none")]
     #[arg(long, short = 'w')]
     crop_w: Option<u64>,
@@ -63,10 +75,10 @@ enum Commands {
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
 struct Cli {
-    /// Optional name to operate on
+    // Optional name to operate on
     // name: Option<String>,
 
-    /// Sets a custom config file
+    // Sets a custom config file
     // #[arg(short, long, value_name = "FILE")]
     // config: Option<PathBuf>,
 
