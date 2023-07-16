@@ -27,22 +27,18 @@ struct Profile {
 struct Photo {
 
     /// Path to image file
-    #[serde(skip_serializing_if = "Option::is_none")]
     #[arg(index = 1)]
-    image: Option<String>,
+    image: String,
 
     /// X coordinate of top-left corner of crop box
-    #[serde(skip_serializing_if = "Option::is_none")]
     #[arg(long, short = 'x')]
     crop_x: Option<u64>,
 
     /// Y coordinate of top-left corner of crop box
-    #[serde(skip_serializing_if = "Option::is_none")]
     #[arg(long, short = 'y')]
     crop_y: Option<u64>,
 
     /// Width/height of crop box (always square)
-    #[serde(skip_serializing_if = "Option::is_none")]
     #[arg(long, short = 'w')]
     crop_w: Option<u64>,
 }
@@ -159,8 +155,7 @@ impl App {
     }
 
     async fn set_photo(&self, photo: &Photo) -> Result<(), Box<dyn std::error::Error>> {
-        let path = photo.image.as_ref().expect("Shopuld provide image").clone();
-        let path: &Path = Path::new(&path);
+        let path: &Path = Path::new(&photo.image);
         let filename = String::from(path.clone().file_name().unwrap().to_str().unwrap());
         let extension = String::from(path.clone().extension().unwrap().to_str().unwrap());
 
