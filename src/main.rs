@@ -28,7 +28,7 @@ struct Profile {
 #[derive(Debug, Serialize, Deserialize, Clone, Parser)]
 struct SetToken {
 
-    /// Path to image file
+    /// Token as string
     #[arg(index = 1)]
     token: String,
 
@@ -78,7 +78,7 @@ enum Commands {
     Status(Profile),
     /// Sets photo
     Photo(Photo),
-    /// Sets token
+    /// Sets token for the app
     SetToken(SetToken),
 }
 

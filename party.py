@@ -111,7 +111,7 @@ emoji_roller = Roller(emojis)
 
 seconds = 10
 
-for x in range(0, 100):
+for x in range(0, 10000):
     # wait some time
     time.sleep(seconds)
     try:
