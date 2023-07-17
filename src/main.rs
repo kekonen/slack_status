@@ -254,7 +254,6 @@ impl Config {
 
 #[tokio::main]
 async fn main() -> TypicalResult<()> {
-    dotenv::dotenv().ok();
     let c = Cli::parse();
     
     if let Some(command) = c.command {

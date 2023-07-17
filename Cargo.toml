@@ -1,6 +1,6 @@
 [package]
 name = "slack_update"
-version = "0.1.5"
+version = "0.1.6"
 edition = "2021"
 description = "simple app to set Slack status, emoji and photo"
 license = "WTFPL"
@@ -12,7 +12,6 @@ reqwest = { version = "0.11", features = ["json", "multipart"] }
 tokio = { version = "1", features = ["full"] }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1.0"
-dotenv = "0.15.0"
 clap = { version = "4.3.12", features = ["derive"] }
 toml = "0.7.6"
 dirs = "5.0.1"
