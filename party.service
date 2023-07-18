@@ -1,0 +1,19 @@
+# /etc/systemd/system/party.service
+# sudo systemctl enable party.service
+# sudo systemctl start party.service
+# sudo systemctl stop party.service
+# sudo systemctl restart party.service
+# sudo systemctl status party.service
+# Make sure to use the right binary
+# Debug journalctl -u party.service
+
+[Unit]
+Description=My party service
+After=multi-user.target
+[Service]
+Type=simple
+Restart=always
+ExecStart=/usr/bin/python3 /home/<username>/party.py
+User=xxx
+[Install]
+WantedBy=multi-user.target

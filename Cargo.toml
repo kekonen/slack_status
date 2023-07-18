@@ -1,6 +1,6 @@
 [package]
 name = "slack_update"
-version = "0.1.6"
+version = "0.1.7"
 edition = "2021"
 description = "simple app to set Slack status, emoji and photo"
 license = "WTFPL"
