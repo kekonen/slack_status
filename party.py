@@ -110,12 +110,25 @@ song_roller = Roller(text_lines)
 emoji_roller = Roller(emojis)
 
 seconds = 10
+pic = False
+picture_path = f"/root/output.png"
+
+ror = "/root/ror"
+slack_update = "/root/.cargo/bin/slack_update"
+
+def set_slack(pic=False):
+    if pic:
+        subprocess.call([ror,"--background","255,0,129","--color","255,217,102", "--output", picture_path])
+        subprocess.call([slack_update, "photo", picture_path])
+    else:
+        subprocess.call([slack_update, "status", "-e", ':{}:'.format(emoji_roller.next()), "-t", '"{}"'.format(song_roller.next())])
 
 for x in range(0, 10000):
     # wait some time
     time.sleep(seconds)
     try:
-        subprocess.call(["slack_update", "status", "-e", ':{}:'.format(emoji_roller.next()), "-t", '"{}"'.format(song_roller.next())])
+        pic = not pic
+        set_slack(pic)
     except e:
         print("Error", e)
         if e == "ratelimited":
